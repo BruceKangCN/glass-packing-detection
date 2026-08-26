@@ -50,6 +50,8 @@ else:
     print(boxes.xywh)
     print("Detections (xywhn):")
     print(boxes.xywhn)
+    print(f"Classes: {boxes.cls.int()}")
+    print(f"Scores: {boxes.conf}")
 
 # %%
 #
