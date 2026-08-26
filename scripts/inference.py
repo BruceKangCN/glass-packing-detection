@@ -46,9 +46,9 @@ boxes = result.boxes # type: ignore
 if boxes is None or len(boxes) == 0:
     print("No object detected.")
 else:
-    print(f"Detections (xywh):")
+    print("Detections (xywh):")
     print(boxes.xywh)
-    print(f"Detections (xywhn):")
+    print("Detections (xywhn):")
     print(boxes.xywhn)
 
 # %%
