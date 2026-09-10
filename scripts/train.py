@@ -8,6 +8,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 parser = argparse.ArgumentParser()
 parser.add_argument("model", nargs="?", default="yolo26n.pt")
 parser.add_argument("-d", "--data", default="data.yaml")
+parser.add_argument("-c", "--config", default=PROJECT_ROOT / "hyp.yaml")
 parser.add_argument("-r", "--resume", action="store_true")
 
 args = parser.parse_args()
@@ -17,7 +18,7 @@ task = model.task if model.task is not None else "detect"
 
 results = model.train(
     data=args.data,
-    cfg=PROJECT_ROOT / "hyp.yaml",
+    cfg=args.config,
     project=PROJECT_ROOT / "runs" / task,
     resume=args.resume,
 )
