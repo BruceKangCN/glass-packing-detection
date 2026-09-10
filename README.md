@@ -1,3 +1,3 @@
-# Glass Packaging Detection
+# Glass Packing Detection
 
-A YOLO 11 model tuned with a private glass packing line dataset.
+A YOLO model trained with a private glass packing line dataset.
