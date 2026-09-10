@@ -3,6 +3,7 @@
 # 1. 导入所需的包并进行全局配置
 #
 
+import argparse
 import sys
 from pathlib import Path
 
@@ -25,21 +26,28 @@ if len(sys.argv) < 2:
 
 # %%
 #
-# 1. 加载模型权重
+# 1. 解析命令行参数
 #
 
-if len(sys.argv) >= 3:
-    model_path = sys.argv[2]
-else:
-    model_path = PROJECT_ROOT / "weights" / "best.pt"
-model = YOLO(model_path)
+parser = argparse.ArgumentParser()
+parser.add_argument("image_path")
+parser.add_argument("-m", "--model", default = PROJECT_ROOT / "weights" / "best.pt")
+parser.add_argument("--conf", default=0.6, type=float)
+args = parser.parse_args()
 
 # %%
 #
-# 2. 进行推理
+# 2. 加载模型权重
 #
 
-results = model.predict(sys.argv[1], conf=0.6)
+model = YOLO(args.model)
+
+# %%
+#
+# 3. 进行推理
+#
+
+results = model.predict(args.image_path, conf=args.conf)
 result = results[0] # type: ignore
 boxes = result.boxes # type: ignore
 
@@ -55,7 +63,7 @@ else:
 
 # %%
 #
-# 3. 可视化
+# 4. 可视化
 #
 
 annotated_img = result.plot()[:, :, ::-1] # type: ignore
