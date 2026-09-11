@@ -1,7 +1,7 @@
 [project]
 name = "glass-packing-detection"
 version = "0.1.0"
-description = "A YOLO model tuend with a private dataset"
+description = "A YOLO model trained with a private dataset"
 readme = "README.md"
 authors = [
     { name = "Bruce Kang", email = "brucekangcn@gmail.com" }
